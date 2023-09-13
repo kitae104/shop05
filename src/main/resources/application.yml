@@ -33,7 +33,7 @@ spring:
 # JPA 설정
 ####################################
   jpa:
-    open-in-view: true      #
+    #open-in-view: true      #
     hibernate:
       ddl-auto: update      # create, update, ...
       naming:
