@@ -2,6 +2,7 @@ package kr.inhatc.shop.entity;
 
 import jakarta.persistence.*;
 import kr.inhatc.shop.constant.OrderStatus;
+import kr.inhatc.shop.utils.audit.BaseEntity;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -12,11 +13,11 @@ import java.util.List;
 @Table(name = "orders")
 @Getter
 @Setter
-@ToString
+@ToString(exclude = {"member", "orderItems"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Order {
+public class Order extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,15 +28,12 @@ public class Order {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @Builder.Default
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<OrderItem> orderItems = new ArrayList<>();
 
     private LocalDateTime orderDate;
 
     private OrderStatus orderStatus;
-
-    private LocalDateTime regTime;      // 등록일 (추후 제거)
-
-    private LocalDateTime updateTime;   // 수정일 (추후 제거)
 
 }

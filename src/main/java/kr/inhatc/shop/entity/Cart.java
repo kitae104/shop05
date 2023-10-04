@@ -1,6 +1,7 @@
 package kr.inhatc.shop.entity;
 
 import jakarta.persistence.*;
+import kr.inhatc.shop.utils.audit.BaseEntity;
 import lombok.*;
 
 @Entity
@@ -10,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Cart {
+public class Cart extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -2,6 +2,7 @@ package kr.inhatc.shop.entity;
 
 import jakarta.persistence.*;
 import kr.inhatc.shop.constant.ItemSellStatus;
+import kr.inhatc.shop.utils.audit.BaseEntity;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Item {
+public class Item extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,8 +36,5 @@ public class Item {
 
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus;
-
-    private LocalDateTime regTime;      // 등록일 (추후 제거)
-    private LocalDateTime updateTime;   // 수정일 (추후 제거)
 
 }
