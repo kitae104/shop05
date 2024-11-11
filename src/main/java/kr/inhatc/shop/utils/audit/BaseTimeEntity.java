@@ -12,7 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 @EntityListeners(value = {AuditingEntityListener.class})
-@MappedSuperclass
+@MappedSuperclass // 테이블로 매핑하지 않고 자식 클래스에게 매핑 정보만 제공
 @Getter
 @Setter
 public abstract class BaseTimeEntity{
