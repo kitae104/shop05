@@ -28,12 +28,12 @@ public class Order extends BaseEntity {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @Builder.Default
+    private LocalDateTime orderDate; // 주문일
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus; // 주문 상태
+
+    @Builder.Default // 디폴트 값이 있을 때 사용 (기본값이 없으면 사용하지 않아도 됨)
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<OrderItem> orderItems = new ArrayList<>();
-
-    private LocalDateTime orderDate;
-
-    private OrderStatus orderStatus;
-
 }
